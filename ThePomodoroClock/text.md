@@ -12,14 +12,37 @@ and
 setInterval(function, miliseconds);
 ```
 
-[setTimeout()](http://www.w3schools.com/jsref/met_win_settimeout.asp) *executes once* the function passed as first parameter after the time setted in milisecond as the second parameter.
-On the other hand,[setInterval()](http://www.w3schools.com/jsref/met_win_setinterval.asp) executes the function every x miliseconds, just what I needed.
+[setTimeout()](1) *executes once* the function passed as first parameter after the time setted in milisecond as the second parameter.
+On the other hand,[setInterval()](2) executes the function every x miliseconds, just what I needed.
 
 ```javascript
 var time = 30;
 
 setInterval(function(){
+ if(time >= 0){
   time--;
-},1000)
+ }
+},1000);
 ```
-With this code, as soon as the page loaded the timer started a countdown
+With this code, as soon as the page loaded the timer started a countdown. However I needed to be able to choose when the timer should start and when it should stop.
+
+The way of stopping an interval is by calling the function `clearInterval()` which takes as a parameter the function name where the `setInterval()`is defined. [Further reading](1)
+
+```javascript
+var time = 30
+
+//The interval starts
+var timer = setInterval(function(){
+ if(time >= 0){
+  time--;
+ }
+},1000);
+
+//The interval stops
+clearInterval(timer);
+```
+###The *this* problem
+
+
+[1](http://www.codenewbie.org/podcast/the-pragmatic-programmer-part-ii)
+[2](http://www.w3schools.com/jsref/met_win_setinterval.asp)
