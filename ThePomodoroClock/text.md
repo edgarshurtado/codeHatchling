@@ -43,6 +43,42 @@ clearInterval(timer);
 ```
 ###The *this* problem
 
+Once I had the timer ticking, the point was to be able to start it and stop it with the user interaction. I could just have had some functions and a global variable for the time. However, due to my Java experience for my last year of vocational training, I have this mindset of having everything encapsulated inside objects. Thus, I came with this structure for the timer:
+
+```javascript
+var timer = {
+  time: null,         //the time set by the user
+  timeHandler: null,  // variable which hosts the setTimer func
+
+  startTimer: function(){},
+
+  stopTimer: function() {}
+  };
+
+  //Controls using jQuery
+  $('#start').click(function(){timer.startTimer();})
+  $('#stop').click(function(){timer.stopTimer();})
+}
+```
+ At this point I had my first big trouble and was related with the scope and the *this* keyword. This was my first attempt to implement the startTimer method
+
+ ```javascript
+var timer = {
+  //...
+
+  startTimer: function(){
+    this.timeHandler = setInterval(function(){
+      this.time--;
+    }, 1000);
+  },
+
+  stopTimer : function() {
+    clearIterval(this.timeHandler);
+  }
+}
+ ```
+
+
 
 [1](http://www.codenewbie.org/podcast/the-pragmatic-programmer-part-ii)
 [2](http://www.w3schools.com/jsref/met_win_setinterval.asp)
