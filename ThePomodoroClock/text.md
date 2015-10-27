@@ -12,8 +12,8 @@ and
 setInterval(function, miliseconds);
 ```
 
-[setTimeout()](http://www.w3schools.com/jsref/met_win_setinterval.asp) *executes once* the function passed as first parameter after the time setted in milisecond as the second parameter.
-On the other hand,[setInterval()](http://www.w3schools.com/jsref/met_win_setinterval.asp) executes the function every x miliseconds, just what I needed.
+[setTimeout()](http://www.w3schools.com/jsref/met_win_settimeout.asp) *executes once* the function passed as first parameter after the time setted in milisecond as the second parameter.
+On the other hand, [setInterval()](http://www.w3schools.com/jsref/met_win_setinterval.asp) executes the function every x miliseconds, just what I needed.
 
 ```javascript
 var time = 30;
@@ -100,13 +100,41 @@ var foo = function(){
 
 foo();
 ```
+![example free call](./console-log.jpg)
+
 In this other scenario, this is inside a function which is used in direct call (There's no *dot* call, so to speak). In this case *this* is bound to the `window` object. But what's this `window`object? My first thought was that it was like the `object` class in Java, the parent of all the other objects. I was wrong though.
 
 >The window object is supported by all browsers. It represents the browser's window.
 >All global JavaScript objects, functions, and variables automatically become members of the window object.
+>
 >Global variables are properties of the window object.
+>
 >Global functions are methods of the window object.
+>
 >Even the document object (of the HTML DOM) is a property of the window object
 >
->[w3schools](http://www.w3schools.com/js/js_window.asp)
+>Source: [w3schools](http://www.w3schools.com/js/js_window.asp)
 
+Accordingly to the quote what I was doing with the *free call* actually was something like `window.foo()` and that's the reason why `this` is bound to `window`.
+
+Once that was clear, I was able to go back to my `startTimer()` function and understand that what I was doing was the same as a free call and I had to use the variable *that*
+
+
+ ```javascript
+var timer = {
+  //...
+
+  startTimer: function(){
+    var that = this;
+    this.timeHandler = setInterval(function(){ //this is equivalen of doing a
+                                                //free call
+      that.time--;
+    }, 1000);
+  },
+
+  stopTimer : function() {
+    clearIterval(this.timeHandler);
+  }
+}
+
+This is a trick I learnd in the [Object-Oriented JavaScript](https://www.udacity.com/course/object-oriented-javascript--ud015)
