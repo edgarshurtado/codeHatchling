@@ -12,8 +12,8 @@ and
 setInterval(function, miliseconds);
 ```
 
-[setTimeout()](1) *executes once* the function passed as first parameter after the time setted in milisecond as the second parameter.
-On the other hand,[setInterval()](2) executes the function every x miliseconds, just what I needed.
+[setTimeout()](http://www.w3schools.com/jsref/met_win_setinterval.asp) *executes once* the function passed as first parameter after the time setted in milisecond as the second parameter.
+On the other hand,[setInterval()](http://www.w3schools.com/jsref/met_win_setinterval.asp) executes the function every x miliseconds, just what I needed.
 
 ```javascript
 var time = 30;
@@ -26,7 +26,7 @@ setInterval(function(){
 ```
 With this code, as soon as the page loaded the timer started a countdown. However I needed to be able to choose when the timer should start and when it should stop.
 
-The way of stopping an interval is by calling the function `clearInterval()` which takes as a parameter the function name where the `setInterval()`is defined. [Further reading](1)
+The way of stopping an interval is by calling the function `clearInterval()` which takes as a parameter the function name where the `setInterval()`is defined.
 
 ```javascript
 var time = 30;
@@ -79,7 +79,7 @@ var timer = {
 
 timer.startTimer();
  ```
-This piece of code wasn't work because I was missing how *this* works. Accordingly with my implementation, I was supposing that *this* was bound to the object in which it was defined. In other words, I thought that as I was using *this* inside a function bounded to a method (`startTimer`) of an object (`timer`), *this* should refer to that object. However, this is one of the tipical missconceptions as pointed out in the Udacity course [Object-Oriented JavaScript](3) at [this video](4). So, if it wasn't bound to `timer`, what was `this` bound to?
+This piece of code wasn't work because I was missing how *this* works. Accordingly with my implementation, I was supposing that *this* was bound to the object in which it was defined. In other words, I thought that as I was using *this* inside a function bounded to a method (`startTimer`) of an object (`timer`), *this* should refer to that object. However, this is one of the tipical missconceptions as pointed out in the Udacity course [Object-Oriented JavaScript](https://www.udacity.com/course/object-oriented-javascript--ud015) at [this video](https://youtu.be/ehZKcas9R-4?t=1m48s). So, if it wasn't bound to `timer`, what was `this` bound to?
 *this* is bounded always to the object that calls the method where it appears. This is really weird to explain in words, thus I'll add some examples
 
 ```javascript
@@ -107,10 +107,6 @@ In this other scenario, this is inside a function which is used in direct call (
 >Global variables are properties of the window object.
 >Global functions are methods of the window object.
 >Even the document object (of the HTML DOM) is a property of the window object
->[w3schools](5)
+>
+>[w3schools](http://www.w3schools.com/js/js_window.asp)
 
-[1](http://www.codenewbie.org/podcast/the-pragmatic-programmer-part-ii)
-[2](http://www.w3schools.com/jsref/met_win_setinterval.asp)
-[3](https://www.udacity.com/course/object-oriented-javascript--ud015)
-[4](https://youtu.be/ehZKcas9R-4?t=1m48s)
-[5](http://www.w3schools.com/js/js_window.asp)
