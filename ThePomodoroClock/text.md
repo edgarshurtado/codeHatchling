@@ -1,8 +1,9 @@
-#The pomodoro clock project
+#The pomodoro clock project (Under construction!)
 This post is my solution for the Basic Front End Development Project from FreeCodeCamp [Build a Pomodoro Clock](http://www.freecodecamp.com/challenges/zipline-build-a-pomodoro-clock). This is a walk through of the steps I made and decitions I took during its development. The aim of this post is helping other fellow campers, give ideas and, overall, serve as a log to myself.
 
 ##Making our clock ticking
 Isn't strange that the first thing I thought about when I was aproaching this exercise was how to decrease continuosly a variable each second. For that purpose I made a research and I found out these 2 functions:
+
 ```javascript
 setTimeout(function, miliseconds);
 ```
@@ -120,7 +121,7 @@ Accordingly to the quote what I was doing with the *free call* actually was some
 Once that was clear, I was able to go back to my `startTimer()` function and understand that what I was doing was the same as a free call and I had to use the variable *that*
 
 
- ```javascript
+```javascript
 var timer = {
   //...
 
@@ -135,6 +136,14 @@ var timer = {
   stopTimer : function() {
     clearIterval(this.timeHandler);
   }
-}
 
-This is a trick I learnd in the [Object-Oriented JavaScript](https://www.udacity.com/course/object-oriented-javascript--ud015)
+  timer.startTimer();
+}
+```
+
+This is a trick I learnt in the [Object-Oriented JavaScript course](https://www.udacity.com/course/object-oriented-javascript--ud015). When I call `timer.startTimer()` I'm doing the *dot call* so the parameter `this` is passed to `starTimer` bounded to `timer`. However, `setInterval` is a free call, so `this` isn't bound to `timer` but `window`. For this reason I set `that`to be the value of `this`in the `startTimer` function, so I was able to refer to `timer` inside `setInterval`. 
+
+##SVG animation
+I wasn't sure why, but one day I feel like having a circle which was eventually filled with red but emulating the movement of a clock. I know that may explanation might not be very clear (sorry about that), so the best way to show it is by showing the codepen.io project that inspired me.
+
+[![svg pie timer](./pie-timer.jpg)](http://codepen.io/agrimsrud/pen/EmCoa) 
