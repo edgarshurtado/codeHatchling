@@ -1,4 +1,4 @@
-![fcc spanish chatroom](./images/fcc-espanol.jpg)
+![fcc spanish chatroom](../images/fcc-espanol.jpg)
 
 The last Saturday(24-01-2016) most of the more active members in freeCodeCamp spanish chat met troughout Google Hangouts, and I really loved the experience.
 
