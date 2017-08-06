@@ -1,4 +1,5 @@
 ![web components log](./webcomponents.png)
+
 One year ago I finished the project I'm featuring in this post. I know it's been a while, however there's a good reason why bringing this project now. In my year of professional career a cycle has been closed. Since I relocate in Valladolid, I've been working mainly as a PHP developer. Been working with PHP has been great, and I've learned to love the language (I got a bad impression of the language in my vocational training). Nevertheless, I missed JavaScript a lot. Luckily, an opportunity was oppened in front of me. A new team of developers was formed at my company, with a full new stack of technologies. Currently, I'm already developing with this team and the Front End framework they use is Vue.js.
 
 Is this framework which made me think about posting my Vocational Training last project. Because, even though I'm very new with Vue.js it is familiar to me. Its phylosophy is working with web components, and that's exactly what I made 2 years ago. A complete website organized exclusively in web components.
